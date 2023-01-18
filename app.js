@@ -51,9 +51,9 @@ const stream = client.stream("statuses/filter", parameters)
                 let code = expanded_url.match(/([A-Za-z0-9]{14,22})/g);
                 if (code) {
                     fortuneinc("0859167070", code[0])
-                    // fortuneinc("0970905719", code[0])
-                    // fortuneinc("0861965468", code[0])
-                    // fortuneinc("0861149040", code[0])
+                    fortuneinc("0970905719", code[0])
+                    fortuneinc("0861965468", code[0])
+                    fortuneinc("0861149040", code[0])
 
 
                 }
@@ -97,7 +97,7 @@ app.listen(port, () => {
 
 app.get('/', (req, res) => {
     res.send('Hello World')
-    sendline('text')
+    sendline('render')
 })
 
 
@@ -113,7 +113,7 @@ function sendline(text) {
                 bearer: "4jyMpeq5v6mawQ0KoYJb7o9B4fFewPbHrNg72HR0DoZ"
             },
             form: {
-                message: text
+                message: 'Render :: ' + text
             }
         },
         (err, httpResponse, body) => {
