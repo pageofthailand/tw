@@ -1,3 +1,4 @@
+require('dotenv').config()
 const request = require("request");
 const twvoucher = require('@fortune-inc/tw-voucher');
 const express = require('express')
@@ -6,12 +7,12 @@ const port = 5000
 
 const Twitter = require('twitter-lite');
 const client = new Twitter({
-    consumer_key: "vyyMlJfXZnDtzvlaMtEu3jBcg", // from Twitter.
-    consumer_secret: "rr8wGxL4LipJ4ueqbwaimBtusPXlWcafuB3nvMLn37C8n672tT", // from Twitter.
-    access_token_key: "823826171536121856-3Ec1wGDt9bw5vfO8gUNLOc8gf9CpOrG", // from your User (oauth_token)
-    access_token_secret: "4cOOtuh4uX45YKIuqyKapeHHlkIOPARk1fO0uQMHVywlb" // from your User (oauth_token_secret)
+    consumer_key: process.env.consumer_key,
+    consumer_secret: process.env.consumer_secret,
+    access_token_key: process.env.access_token_key,
+    access_token_secret: process.env.access_token_secret
 });
-console.log("Start");
+console.log(process.env.name);
 
 let oldUrl = ["1", "2", "3", "4", "5"];
 
@@ -50,12 +51,10 @@ const stream = client.stream("statuses/filter", parameters)
 
                 let code = expanded_url.match(/([A-Za-z0-9]{14,22})/g);
                 if (code) {
-                    fortuneinc("0859167070", code[0])
-                    fortuneinc("0970905719", code[0])
-                    fortuneinc("0861965468", code[0])
-                    fortuneinc("0861149040", code[0])
-
-
+                    fortuneinc(process.env.tel1, code[0])
+                    fortuneinc(process.env.tel2, code[0])
+                    fortuneinc(process.env.tel3, code[0])
+                    fortuneinc(process.env.tel4, code[0])
                 }
 
 
@@ -113,7 +112,7 @@ function sendline(text) {
                 bearer: "4jyMpeq5v6mawQ0KoYJb7o9B4fFewPbHrNg72HR0DoZ"
             },
             form: {
-                message: 'Render :: ' + text
+                message: process.env.name + ' :: ' + text
             }
         },
         (err, httpResponse, body) => {
