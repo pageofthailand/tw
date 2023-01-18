@@ -13,7 +13,7 @@ const client = new Twitter({
     access_token_secret: process.env.access_token_secret
 });
 console.log(process.env.name);
-sendline(new Date().toLocaleString("th-TH", { timeZone: "Asia/Bangkok" }) + 'Start :' + process.env.name)
+sendline('Start : ' + process.env.name)
 
 let oldUrl = ["1", "2", "3", "4", "5"];
 
