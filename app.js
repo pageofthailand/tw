@@ -17,6 +17,7 @@ console.log(process.env.name);
 let oldUrl = ["1", "2", "3", "4", "5"];
 
 async function fortuneinc(phone_number, voucher_code) {
+    let phone_number = phone_number.toString()
     twvoucher(phone_number, voucher_code).then(redeemed => {
         console.log(`${phone_number} : redeem ซอง ${redeemed?.code} ของ ${redeemed?.owner_full_name} จำนวน ${redeemed?.amount} บาทแล้ว`)
     }).catch(err => {
