@@ -57,7 +57,6 @@ const stream = client.stream("statuses/filter", parameters)
                     fortuneinc(process.env.tel4, code[0])
                 }
 
-
                 setTimeout(function () {
                     checknotify(expanded_url)
                 }, 5000);
