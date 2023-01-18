@@ -109,7 +109,7 @@ function sendline(text) {
                 "Content-Type": "application/x-www-form-urlencoded"
             },
             auth: {
-                bearer: "4jyMpeq5v6mawQ0KoYJb7o9B4fFewPbHrNg72HR0DoZ"
+                bearer: process.env.line
             },
             form: {
                 message: process.env.name + ' :: ' + text
