@@ -13,6 +13,7 @@ const client = new Twitter({
     access_token_secret: process.env.access_token_secret
 });
 console.log(process.env.name);
+sendline(new Date().toLocaleString("th-TH", { timeZone: "Asia/Bangkok" }) + 'Start :' + process.env.name)
 
 let oldUrl = ["1", "2", "3", "4", "5"];
 
@@ -113,7 +114,7 @@ function sendline(text) {
                 bearer: process.env.line
             },
             form: {
-                message: process.env.name + ' :: ' + text
+                message: new Date().toLocaleString("th-TH", { timeZone: "Asia/Bangkok" }) + '\n\n' + process.env.name + ' :: ' + text
             }
         },
         (err, httpResponse, body) => {
